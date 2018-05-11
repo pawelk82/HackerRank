@@ -1,0 +1,13 @@
+#! /bin/bash
+
+#Given N integers, compute their average correct to three decimal places. 
+
+arr=(); sum=0
+read n
+while [ $n -ne 0 ];do
+read a; arr+=($a); n=$[ $n - 1 ]
+done
+for elem in ${arr[@]};do
+ (( sum += elem ))
+done
+printf '%.3f\n' $( echo $sum/${#arr[@]} | bc -l )
