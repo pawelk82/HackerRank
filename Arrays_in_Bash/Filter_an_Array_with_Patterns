@@ -19,5 +19,5 @@
 #after removing these characters, you should display a blank line.
 
 declare -a countries
-while read country; do countries+=($country); done
+while IFS= read -r country || [[ -n "$country" ]]; do countries+=($country); done
 for i in ${countries[@]}; do if [[ $i != *[Aa]* ]]; then echo $i; fi; done 

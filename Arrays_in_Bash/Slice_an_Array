@@ -12,5 +12,5 @@
 #Display the sliced portion of the array of country names, with a space between each of them.
 
 declare -a countries
-while read country; do countries+=($country); done
+while IFS= read -r country || [[ -n "$country" ]]; do countries+=($country); done
 echo ${countries[@]:3:5}
